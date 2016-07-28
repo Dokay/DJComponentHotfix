@@ -1,0 +1,423 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 46;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		162B5CBCE24BB6272E16B785 /* libPods-DJComponentHotfix.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 0A546E56D439E2F1550CBF73 /* libPods-DJComponentHotfix.a */; };
+		4E006C901C48D04C005664D3 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 4E006C8F1C48D04C005664D3 /* main.m */; };
+		4E006C931C48D04C005664D3 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 4E006C921C48D04C005664D3 /* AppDelegate.m */; };
+		4E006C961C48D04C005664D3 /* JPViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 4E006C951C48D04C005664D3 /* JPViewController.m */; };
+		4E006C9B1C48D04C005664D3 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 4E006C9A1C48D04C005664D3 /* Assets.xcassets */; };
+		4E006C9E1C48D04C005664D3 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 4E006C9C1C48D04C005664D3 /* LaunchScreen.storyboard */; };
+		4E006CBE1C48D202005664D3 /* libz.1.2.5.tbd in Frameworks */ = {isa = PBXBuildFile; fileRef = 4E006CBD1C48D202005664D3 /* libz.1.2.5.tbd */; };
+		4E0D48671D475A3600CA7510 /* DJHotfixHelper.m in Sources */ = {isa = PBXBuildFile; fileRef = 4E0D48551D475A3600CA7510 /* DJHotfixHelper.m */; };
+		4E0D48681D475A3600CA7510 /* DJHotfixManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 4E0D48571D475A3600CA7510 /* DJHotfixManager.m */; };
+		4E0D48691D475A3600CA7510 /* RSA.m in Sources */ = {isa = PBXBuildFile; fileRef = 4E0D485A1D475A3600CA7510 /* RSA.m */; };
+		4E0D9DF11CAA20DF00449965 /* demo.js in Resources */ = {isa = PBXBuildFile; fileRef = 4E0D9DEF1CAA20DF00449965 /* demo.js */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXFileReference section */
+		0A546E56D439E2F1550CBF73 /* libPods-DJComponentHotfix.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-DJComponentHotfix.a"; sourceTree = BUILT_PRODUCTS_DIR; };
+		3541726D53941775050DA85A /* Pods-DJComponentHotfix.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-DJComponentHotfix.debug.xcconfig"; path = "Pods/Target Support Files/Pods-DJComponentHotfix/Pods-DJComponentHotfix.debug.xcconfig"; sourceTree = "<group>"; };
+		4E006C8B1C48D04C005664D3 /* DJComponentHotfix.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = DJComponentHotfix.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		4E006C8F1C48D04C005664D3 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
+		4E006C911C48D04C005664D3 /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
+		4E006C921C48D04C005664D3 /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
+		4E006C941C48D04C005664D3 /* JPViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = JPViewController.h; sourceTree = "<group>"; };
+		4E006C951C48D04C005664D3 /* JPViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = JPViewController.m; sourceTree = "<group>"; };
+		4E006C9A1C48D04C005664D3 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		4E006C9D1C48D04C005664D3 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
+		4E006C9F1C48D04C005664D3 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		4E006CBD1C48D202005664D3 /* libz.1.2.5.tbd */ = {isa = PBXFileReference; lastKnownFileType = "sourcecode.text-based-dylib-definition"; name = libz.1.2.5.tbd; path = usr/lib/libz.1.2.5.tbd; sourceTree = SDKROOT; };
+		4E0D48541D475A3600CA7510 /* DJHotfixHelper.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DJHotfixHelper.h; sourceTree = "<group>"; };
+		4E0D48551D475A3600CA7510 /* DJHotfixHelper.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DJHotfixHelper.m; sourceTree = "<group>"; };
+		4E0D48561D475A3600CA7510 /* DJHotfixManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DJHotfixManager.h; sourceTree = "<group>"; };
+		4E0D48571D475A3600CA7510 /* DJHotfixManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DJHotfixManager.m; sourceTree = "<group>"; };
+		4E0D48591D475A3600CA7510 /* RSA.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RSA.h; sourceTree = "<group>"; };
+		4E0D485A1D475A3600CA7510 /* RSA.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RSA.m; sourceTree = "<group>"; };
+		4E0D9DEF1CAA20DF00449965 /* demo.js */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.javascript; path = demo.js; sourceTree = "<group>"; };
+		628A12DA0560D89F6921820F /* Pods-DJComponentHotfix.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-DJComponentHotfix.release.xcconfig"; path = "Pods/Target Support Files/Pods-DJComponentHotfix/Pods-DJComponentHotfix.release.xcconfig"; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		4E006C881C48D04C005664D3 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				4E006CBE1C48D202005664D3 /* libz.1.2.5.tbd in Frameworks */,
+				162B5CBCE24BB6272E16B785 /* libPods-DJComponentHotfix.a in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		4E006C821C48D04C005664D3 = {
+			isa = PBXGroup;
+			children = (
+				4E006C8D1C48D04C005664D3 /* DJComponentHotfix */,
+				4E006C8C1C48D04C005664D3 /* Products */,
+				540EC0571A095123A5F1E830 /* Pods */,
+				9F04178D3F66D52DEC7948FA /* Frameworks */,
+			);
+			sourceTree = "<group>";
+		};
+		4E006C8C1C48D04C005664D3 /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				4E006C8B1C48D04C005664D3 /* DJComponentHotfix.app */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		4E006C8D1C48D04C005664D3 /* DJComponentHotfix */ = {
+			isa = PBXGroup;
+			children = (
+				4E0D48521D475A3600CA7510 /* DJHotfixManager */,
+				4E006C911C48D04C005664D3 /* AppDelegate.h */,
+				4E006C921C48D04C005664D3 /* AppDelegate.m */,
+				4E006C941C48D04C005664D3 /* JPViewController.h */,
+				4E006C951C48D04C005664D3 /* JPViewController.m */,
+				4E006C9A1C48D04C005664D3 /* Assets.xcassets */,
+				4E006C9C1C48D04C005664D3 /* LaunchScreen.storyboard */,
+				4E006C9F1C48D04C005664D3 /* Info.plist */,
+				4E0D9DEF1CAA20DF00449965 /* demo.js */,
+				4E006C8E1C48D04C005664D3 /* Supporting Files */,
+			);
+			path = DJComponentHotfix;
+			sourceTree = "<group>";
+		};
+		4E006C8E1C48D04C005664D3 /* Supporting Files */ = {
+			isa = PBXGroup;
+			children = (
+				4E006CBD1C48D202005664D3 /* libz.1.2.5.tbd */,
+				4E006C8F1C48D04C005664D3 /* main.m */,
+			);
+			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+		4E0D48521D475A3600CA7510 /* DJHotfixManager */ = {
+			isa = PBXGroup;
+			children = (
+				4E0D48531D475A3600CA7510 /* Core */,
+				4E0D48581D475A3600CA7510 /* RSA */,
+			);
+			path = DJHotfixManager;
+			sourceTree = "<group>";
+		};
+		4E0D48531D475A3600CA7510 /* Core */ = {
+			isa = PBXGroup;
+			children = (
+				4E0D48561D475A3600CA7510 /* DJHotfixManager.h */,
+				4E0D48571D475A3600CA7510 /* DJHotfixManager.m */,
+				4E0D48541D475A3600CA7510 /* DJHotfixHelper.h */,
+				4E0D48551D475A3600CA7510 /* DJHotfixHelper.m */,
+			);
+			path = Core;
+			sourceTree = "<group>";
+		};
+		4E0D48581D475A3600CA7510 /* RSA */ = {
+			isa = PBXGroup;
+			children = (
+				4E0D48591D475A3600CA7510 /* RSA.h */,
+				4E0D485A1D475A3600CA7510 /* RSA.m */,
+			);
+			path = RSA;
+			sourceTree = "<group>";
+		};
+		540EC0571A095123A5F1E830 /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				3541726D53941775050DA85A /* Pods-DJComponentHotfix.debug.xcconfig */,
+				628A12DA0560D89F6921820F /* Pods-DJComponentHotfix.release.xcconfig */,
+			);
+			name = Pods;
+			sourceTree = "<group>";
+		};
+		9F04178D3F66D52DEC7948FA /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				0A546E56D439E2F1550CBF73 /* libPods-DJComponentHotfix.a */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		4E006C8A1C48D04C005664D3 /* DJComponentHotfix */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 4E006CA21C48D04C005664D3 /* Build configuration list for PBXNativeTarget "DJComponentHotfix" */;
+			buildPhases = (
+				B22B2669BFE7F7F755D7CA1E /* [CP] Check Pods Manifest.lock */,
+				4E006C871C48D04C005664D3 /* Sources */,
+				4E006C881C48D04C005664D3 /* Frameworks */,
+				4E006C891C48D04C005664D3 /* Resources */,
+				DD1CDA8459D5D98AE24D05A3 /* [CP] Embed Pods Frameworks */,
+				F1C06F6010F8E1661110C5A6 /* [CP] Copy Pods Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = DJComponentHotfix;
+			productName = DJComponentHotfix;
+			productReference = 4E006C8B1C48D04C005664D3 /* DJComponentHotfix.app */;
+			productType = "com.apple.product-type.application";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		4E006C831C48D04C005664D3 /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				LastUpgradeCheck = 0720;
+				ORGANIZATIONNAME = dj226;
+				TargetAttributes = {
+					4E006C8A1C48D04C005664D3 = {
+						CreatedOnToolsVersion = 7.2;
+					};
+				};
+			};
+			buildConfigurationList = 4E006C861C48D04C005664D3 /* Build configuration list for PBXProject "DJComponentHotfix" */;
+			compatibilityVersion = "Xcode 3.2";
+			developmentRegion = English;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+				Base,
+			);
+			mainGroup = 4E006C821C48D04C005664D3;
+			productRefGroup = 4E006C8C1C48D04C005664D3 /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				4E006C8A1C48D04C005664D3 /* DJComponentHotfix */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		4E006C891C48D04C005664D3 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				4E006C9E1C48D04C005664D3 /* LaunchScreen.storyboard in Resources */,
+				4E006C9B1C48D04C005664D3 /* Assets.xcassets in Resources */,
+				4E0D9DF11CAA20DF00449965 /* demo.js in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXShellScriptBuildPhase section */
+		B22B2669BFE7F7F755D7CA1E /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_ROOT}/../Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [[ $? != 0 ]] ; then\n    cat << EOM\nerror: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\nEOM\n    exit 1\nfi\n";
+			showEnvVarsInLog = 0;
+		};
+		DD1CDA8459D5D98AE24D05A3 /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-DJComponentHotfix/Pods-DJComponentHotfix-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		F1C06F6010F8E1661110C5A6 /* [CP] Copy Pods Resources */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Copy Pods Resources";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-DJComponentHotfix/Pods-DJComponentHotfix-resources.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+/* End PBXShellScriptBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		4E006C871C48D04C005664D3 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				4E0D48691D475A3600CA7510 /* RSA.m in Sources */,
+				4E006C961C48D04C005664D3 /* JPViewController.m in Sources */,
+				4E006C931C48D04C005664D3 /* AppDelegate.m in Sources */,
+				4E0D48671D475A3600CA7510 /* DJHotfixHelper.m in Sources */,
+				4E0D48681D475A3600CA7510 /* DJHotfixManager.m in Sources */,
+				4E006C901C48D04C005664D3 /* main.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin PBXVariantGroup section */
+		4E006C9C1C48D04C005664D3 /* LaunchScreen.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				4E006C9D1C48D04C005664D3 /* Base */,
+			);
+			name = LaunchScreen.storyboard;
+			sourceTree = "<group>";
+		};
+/* End PBXVariantGroup section */
+
+/* Begin XCBuildConfiguration section */
+		4E006CA01C48D04C005664D3 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = dwarf;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_TESTABILITY = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 9.2;
+				MTL_ENABLE_DEBUG_INFO = YES;
+				ONLY_ACTIVE_ARCH = YES;
+				SDKROOT = iphoneos;
+			};
+			name = Debug;
+		};
+		4E006CA11C48D04C005664D3 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				ENABLE_NS_ASSERTIONS = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 9.2;
+				MTL_ENABLE_DEBUG_INFO = NO;
+				SDKROOT = iphoneos;
+				VALIDATE_PRODUCT = YES;
+			};
+			name = Release;
+		};
+		4E006CA31C48D04C005664D3 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 3541726D53941775050DA85A /* Pods-DJComponentHotfix.debug.xcconfig */;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				INFOPLIST_FILE = DJComponentHotfix/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 7.0;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = com.dj226.DJComponentHotfix;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+			};
+			name = Debug;
+		};
+		4E006CA41C48D04C005664D3 /* Release */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 628A12DA0560D89F6921820F /* Pods-DJComponentHotfix.release.xcconfig */;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				INFOPLIST_FILE = DJComponentHotfix/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 7.0;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = com.dj226.DJComponentHotfix;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		4E006C861C48D04C005664D3 /* Build configuration list for PBXProject "DJComponentHotfix" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				4E006CA01C48D04C005664D3 /* Debug */,
+				4E006CA11C48D04C005664D3 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		4E006CA21C48D04C005664D3 /* Build configuration list for PBXNativeTarget "DJComponentHotfix" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				4E006CA31C48D04C005664D3 /* Debug */,
+				4E006CA41C48D04C005664D3 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = 4E006C831C48D04C005664D3 /* Project object */;
+}
