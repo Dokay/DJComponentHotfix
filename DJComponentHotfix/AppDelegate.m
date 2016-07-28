@@ -20,9 +20,13 @@
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {
     // Override point for customization after application launch.
 //    [JPEngine startEngine];
-//    NSString *sourcePath = [[NSBundle mainBundle] pathForResource:@"demo" ofType:@"js"];
+//    NSString *sourcePath = [[NSBundle mainBundle] pathForResource:@"demoSimple" ofType:@"js"];
 //    NSString *script = [NSString stringWithContentsOfFile:sourcePath encoding:NSUTF8StringEncoding error:nil];
 //    [JPEngine evaluateScript:script];
+//    
+//    NSString *sourcePath1 = [[NSBundle mainBundle] pathForResource:@"demo" ofType:@"js"];
+//    NSString *script1 = [NSString stringWithContentsOfFile:sourcePath1 encoding:NSUTF8StringEncoding error:nil];
+//    [JPEngine evaluateScript:script1];
     
     self.window = [[UIWindow alloc] initWithFrame:[UIScreen mainScreen].bounds];
     JPViewController *rootViewController = [JPViewController new];

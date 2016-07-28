@@ -8,7 +8,6 @@
 
 #import "DJHotfixManager.h"
 #import "JPEngine.h"
-#import <CommonCrypto/CommonCrypto.h>
 
 #define KTestJSAlert @"\
 var alertView = require('UIAlertView').alloc().init();\
@@ -19,7 +18,6 @@ alertView.show(); \
 "
 
 #define DJ_HOT_MD5_FROM_SERVER_CACHE_KEY @"DJ_HOT_MD5_FROM_SERVER_CACHE_KEY"
-#define DJ_HOT_MD5_REAL_CACHE_KEY @"DJ_HOT_MD5_REAL_CACHE_KEY"
 #define DJ_HOT_VERSION_CACHE_KEY @"DJ_HOT_VERSION_CACHE_KEY"
 
 @interface DJHotfixManager()
@@ -73,8 +71,9 @@ alertView.show(); \
         }
 
         NSString *jsContentOld = [self.hotFixHelper jsContentCached];
-
-        if ([self checkJSAvaliable:jsContentOld]) {
+        NSString *encryptionMd5 = [self readLastestMd5FromServer];
+        
+        if ([self checkJSAvaliable:jsContentOld withEncryptionMd5:encryptionMd5]) {
             [self excuteJS:jsContentOld];
             if (self.delegate != nil && [self.delegate respondsToSelector:@selector(hotfixSuccessFormServer:)]) {
                 [self.delegate hotfixSuccessFormServer:self.bLoadingFromServer];
@@ -109,17 +108,15 @@ alertView.show(); \
                 NSLog(@"JS download Error: %@", error);
             } else {
                 if (data.length > 0) {
-                    NSString *realMd5 = [self md5WithData:data];// get md5 from data
-                    [self.hotFixHelper saveCacheValue:realMd5 forKey:DJ_HOT_MD5_REAL_CACHE_KEY];
-                    NSString *appVersion = [weakSelf appVersion];
-                    [self.hotFixHelper saveCacheValue:appVersion forKey:DJ_HOT_VERSION_CACHE_KEY];
-                    //save zip and unzip
+
                     NSString *jsContentNew =[[NSString alloc] initWithData:data encoding:NSUTF8StringEncoding];
-                    if ([weakSelf checkJSAvaliable:jsContentNew]) {
+                    if ([weakSelf checkJSAvaliable:jsContentNew withEncryptionMd5:weakSelf.tmpMd5FromServer]) {
                         [self.hotFixHelper saveCacheValue:weakSelf.tmpMd5FromServer forKey:DJ_HOT_MD5_FROM_SERVER_CACHE_KEY];
                         [weakSelf.hotFixHelper saveJSContent:data];
+                        NSString *appVersion = [weakSelf appVersion];
+                        [self.hotFixHelper saveCacheValue:appVersion forKey:DJ_HOT_VERSION_CACHE_KEY];
+                        [self excuteJSFromLocal];
                     }
-                    [self excuteJSFromLocal];
                 }
             }
             weakSelf.bLoadingFromServer = NO;
@@ -129,25 +126,15 @@ alertView.show(); \
     }
 }
 
-- (BOOL)checkJSAvaliable:(NSString *)jsContent
+- (BOOL)checkJSAvaliable:(NSString *)jsContent withEncryptionMd5:(NSString *)encryptionMd5
 {
-    NSString *realMd5 = [self.hotFixHelper valueForCacheKey:DJ_HOT_MD5_REAL_CACHE_KEY];
-    NSString *encryptionMd5 = [self readLastestMd5FromServer];
+    NSString *realMd5 = [self.hotFixHelper jsRealMd5];
     NSString *decryptionMd5 = [self.hotFixHelper decryptionMd5:encryptionMd5];
     if ([[realMd5 uppercaseString] isEqualToString:[decryptionMd5 uppercaseString]]) {
         return jsContent.length > 0 && ([jsContent rangeOfString:@"require"].location != NSNotFound);
     }else{
         return NO;
     }
-}
-
-- (NSString*)md5WithData:(NSData *)data
-{
-    unsigned char result[16];
-    CC_MD5( data.bytes, (CC_LONG)data.length, result ); // This is the md5 call
-    return [NSString stringWithFormat:@"%02X%02X%02X%02X%02X%02X%02X%02X%02X%02X%02X%02X%02X%02X%02X%02X",
-            result[0], result[1], result[2], result[3], result[4], result[5], result[6], result[7],
-            result[8], result[9], result[10], result[11],result[12], result[13], result[14], result[15]];
 }
 
 - (NSString *)readLastestMd5FromServer
