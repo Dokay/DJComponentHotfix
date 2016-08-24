@@ -69,7 +69,7 @@ alertView.show(); \
             //updated Version
             return;
         }
-
+        
         NSString *jsContentOld = [self.hotFixHelper jsContentCached];
         NSString *encryptionMd5 = [self readLastestMd5FromServer];
         
@@ -108,7 +108,7 @@ alertView.show(); \
                 NSLog(@"JS download Error: %@", error);
             } else {
                 if (data.length > 0) {
-
+                    
                     NSString *jsContentNew =[[NSString alloc] initWithData:data encoding:NSUTF8StringEncoding];
                     if ([weakSelf checkJSAvaliable:jsContentNew withEncryptionMd5:weakSelf.tmpMd5FromServer]) {
                         [self.hotFixHelper saveCacheValue:weakSelf.tmpMd5FromServer forKey:DJ_HOT_MD5_FROM_SERVER_CACHE_KEY];
@@ -128,13 +128,14 @@ alertView.show(); \
 
 - (BOOL)checkJSAvaliable:(NSString *)jsContent withEncryptionMd5:(NSString *)encryptionMd5
 {
-    NSString *realMd5 = [self.hotFixHelper jsRealMd5];
-    NSString *decryptionMd5 = [self.hotFixHelper decryptionMd5:encryptionMd5];
-    if ([[realMd5 uppercaseString] isEqualToString:[decryptionMd5 uppercaseString]]) {
-        return jsContent.length > 0 && ([jsContent rangeOfString:@"require"].location != NSNotFound);
-    }else{
-        return NO;
-    }
+    //    NSString *realMd5 = [self.hotFixHelper jsRealMd5];
+    //    NSString *decryptionMd5 = [self.hotFixHelper decryptionMd5:encryptionMd5];
+    //    if ([[realMd5 uppercaseString] isEqualToString:[decryptionMd5 uppercaseString]]) {
+    //        return jsContent.length > 0 && ([jsContent rangeOfString:@"require"].location != NSNotFound);
+    //    }else{
+    //        return NO;
+    //    }
+    return jsContent.length > 0 && ([jsContent rangeOfString:@"require"].location != NSNotFound);
 }
 
 - (NSString *)readLastestMd5FromServer
