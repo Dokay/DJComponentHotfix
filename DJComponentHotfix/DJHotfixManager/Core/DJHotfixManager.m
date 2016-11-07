@@ -8,6 +8,7 @@
 
 #import "DJHotfixManager.h"
 #import "JPEngine.h"
+#import <QuartzCore/QuartzCore.h>
 
 #define KTestJSAlert @"\
 var alertView = require('UIAlertView').alloc().init();\
@@ -19,6 +20,10 @@ alertView.show(); \
 
 #define DJ_HOT_MD5_FROM_SERVER_CACHE_KEY @"DJ_HOT_MD5_FROM_SERVER_CACHE_KEY"
 #define DJ_HOT_VERSION_CACHE_KEY @"DJ_HOT_VERSION_CACHE_KEY"
+#define DJ_HOTFIX_CRASH_COUNT_KEY @"DJ_HOTFIX_CRASH_COUNT_KEY"
+
+static NSInteger const kContinuousCrashNeedToStop = 5;
+static CFTimeInterval const kCrashAfterExcutingHotFixTimeInterval = 5.0;
 
 @interface DJHotfixManager()
 
@@ -62,19 +67,32 @@ alertView.show(); \
 
 - (void)excuteJSFromLocal
 {
+    NSInteger crashCount = [self readCrashCount];
+    
+    if (crashCount > kContinuousCrashNeedToStop) {
+        return;//连续5此执行hot fix 后，应用没活超过5秒钟
+    }
+    
+    crashCount ++;
+    [self setCrashCount:crashCount];
+    
+    dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(kCrashAfterExcutingHotFixTimeInterval * NSEC_PER_SEC)), dispatch_get_main_queue(), ^(void){
+        [self setCrashCount:0];
+    });
+    
     @try {
         NSString *appVsersion = [self appVersion];
-        NSString *appVersionCached = [self.hotFixHelper valueForCacheKey:DJ_HOT_VERSION_CACHE_KEY];
+        NSString *appVersionCached = (NSString *)[self.hotFixHelper valueForCacheKey:DJ_HOT_VERSION_CACHE_KEY];
         if (![appVsersion isEqualToString:appVersionCached]) {
             //updated Version
             return;
         }
         
-        NSString *jsContentOld = [self.hotFixHelper jsContentCached];
-        NSString *encryptionMd5 = [self readLastestMd5FromServer];
+        NSString *jsContent = [self.hotFixHelper jsContentCached];
+        NSString *encryptionMd5 = [self readLastestMd5];
         
-        if ([self checkJSAvaliable:jsContentOld withEncryptionMd5:encryptionMd5]) {
-            [self excuteJS:jsContentOld];
+        if ([self checkJSAvaliable:jsContent withEncryptionMd5:encryptionMd5]) {
+            [self excuteJS:jsContent];
             if (self.delegate != nil && [self.delegate respondsToSelector:@selector(hotfixSuccessFormServer:)]) {
                 [self.delegate hotfixSuccessFormServer:self.bLoadingFromServer];
             }
@@ -108,9 +126,9 @@ alertView.show(); \
                 NSLog(@"JS download Error: %@", error);
             } else {
                 if (data.length > 0) {
-                    
                     NSString *jsContentNew =[[NSString alloc] initWithData:data encoding:NSUTF8StringEncoding];
                     if ([weakSelf checkJSAvaliable:jsContentNew withEncryptionMd5:weakSelf.tmpMd5FromServer]) {
+                        [self setCrashCount:0];
                         [self.hotFixHelper saveCacheValue:weakSelf.tmpMd5FromServer forKey:DJ_HOT_MD5_FROM_SERVER_CACHE_KEY];
                         [weakSelf.hotFixHelper saveJSContent:data];
                         NSString *appVersion = [weakSelf appVersion];
@@ -135,17 +153,29 @@ alertView.show(); \
     }else{
         return NO;
     }
+//    return jsContent.length > 0 && ([jsContent rangeOfString:@"require"].location != NSNotFound);
 }
 
-- (NSString *)readLastestMd5FromServer
+- (NSString *)readLastestMd5
 {
-    NSString *md5 = [self.hotFixHelper valueForCacheKey:DJ_HOT_MD5_FROM_SERVER_CACHE_KEY];
+    NSString *md5 = (NSString *)[self.hotFixHelper valueForCacheKey:DJ_HOT_MD5_FROM_SERVER_CACHE_KEY];
     return md5 ? md5 : @"";
 }
 
 - (void)setServerMd5:(NSString *)md5
 {
     self.tmpMd5FromServer = md5;
+}
+
+- (NSInteger)readCrashCount
+{
+    NSNumber *crashCount = (NSNumber *)[self.hotFixHelper valueForCacheKey:DJ_HOTFIX_CRASH_COUNT_KEY];
+    return [crashCount integerValue];
+}
+
+- (void)setCrashCount:(NSInteger)crashCount
+{
+    [self.hotFixHelper saveCacheValue:@(crashCount) forKey:DJ_HOTFIX_CRASH_COUNT_KEY];
 }
 
 - (NSString *)appVersion

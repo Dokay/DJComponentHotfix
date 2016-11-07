@@ -15,14 +15,14 @@
 
 @implementation DJHotfixHelper
 
-- (void)saveCacheValue:(NSString *)value forKey:(NSString *)key
+- (void)saveCacheValue:(NSObject *)value forKey:(NSString *)key
 {
     value = value ? value : @"";
     [[NSUserDefaults standardUserDefaults] setObject:value forKey:key];
     [[NSUserDefaults standardUserDefaults] synchronize];
 }
 
-- (NSString *)valueForCacheKey:(NSString *)key
+- (NSObject *)valueForCacheKey:(NSString *)key
 {
     NSAssert(key.length > 0, @"key can not be empty");
     return [[NSUserDefaults standardUserDefaults] objectForKey:key];
@@ -40,20 +40,20 @@
 
 - (void)saveJSContent:(NSData *)jsContentData
 {
-    return [self saveJSFileWithData:jsContentData];
+    return [self p_saveJSFileWithData:jsContentData];
 }
 
 - (NSString *)jsContentCached
 {
-    return [self readJSFileFromLocal];
+    return [self p_readJSFileFromLocal];
 }
 
 - (NSString *)jsRealMd5
 {
-    NSString *filePath = [self jsCacheFilePath];
+    NSString *filePath = [self p_jsCacheFilePath];
     if (filePath && [[NSFileManager defaultManager] fileExistsAtPath:filePath]) {
         NSData *fileData = [NSData dataWithContentsOfFile:filePath];
-        return [self md5WithData:fileData];
+        return [self p_md5WithData:fileData];
     }
     return @"";
 }
@@ -63,10 +63,10 @@
  *
  *  @param data js 字符串二进制
  */
-- (void)saveJSFileWithData:(NSData *)data
+- (void)p_saveJSFileWithData:(NSData *)data
 {
     if (data) {
-        NSString *filePath = [self jsCacheFilePath];
+        NSString *filePath = [self p_jsCacheFilePath];
         NSError *error;
         [data writeToFile:filePath options:NSDataWritingAtomic error:&error];
         if (error) {
@@ -75,9 +75,9 @@
     }
 }
 
-- (NSString *)readJSFileFromLocal
+- (NSString *)p_readJSFileFromLocal
 {
-    NSString *filePath = [self jsCacheFilePath];
+    NSString *filePath = [self p_jsCacheFilePath];
     if (filePath && [[NSFileManager defaultManager] fileExistsAtPath:filePath]) {
         NSData *fileData = [NSData dataWithContentsOfFile:filePath];
         if (fileData) {
@@ -88,12 +88,12 @@
     return nil;
 }
 
-- (NSString *)jsCacheFilePath
+- (NSString *)p_jsCacheFilePath
 {
-    return [NSString stringWithFormat:@"%@/%@",[self dirForCache],CACHE_FILE_NAME];
+    return [NSString stringWithFormat:@"%@/%@",[self p_dirForCache],CACHE_FILE_NAME];
 }
 
-- (NSString *)dirForCache
+- (NSString *)p_dirForCache
 {
     NSArray *paths = NSSearchPathForDirectoriesInDomains(NSDocumentDirectory,NSUserDomainMask, YES);
     NSString *documentsDirectory = [paths objectAtIndex:0];
@@ -105,7 +105,7 @@
     return path;
 }
 
-- (NSString*)md5WithData:(NSData *)data
+- (NSString*)p_md5WithData:(NSData *)data
 {
     unsigned char result[16];
     CC_MD5( data.bytes, (CC_LONG)data.length, result ); // This is the md5 call

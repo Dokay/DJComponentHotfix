@@ -16,7 +16,7 @@
  *  @param value 需要保存的值
  *  @param key 需要保存的键
  */
-- (void)saveCacheValue:(NSString *)value forKey:(NSString *)key;
+- (void)saveCacheValue:(NSObject *)value forKey:(NSString *)key;
 
 /**
  *  根据键值读取值
@@ -25,7 +25,7 @@
  *
  *  @return 值
  */
-- (NSString *)valueForCacheKey:(NSString *)key;
+- (NSObject *)valueForCacheKey:(NSString *)key;
 
 /**
  *  最近缓存的js补丁

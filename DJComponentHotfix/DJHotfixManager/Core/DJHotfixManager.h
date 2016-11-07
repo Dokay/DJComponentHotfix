@@ -25,7 +25,7 @@
 - (void)excuteJSFromLocal;
 - (void)excuteJSFromServerWithUrl:(NSString *)url;
 
-- (NSString *)readLastestMd5FromServer;
+- (NSString *)readLastestMd5;
 - (void)setServerMd5:(NSString *)md5;
 
 @end
