@@ -22,8 +22,8 @@ alertView.show(); \
 #define DJ_HOT_VERSION_CACHE_KEY @"DJ_HOT_VERSION_CACHE_KEY"
 #define DJ_HOTFIX_CRASH_COUNT_KEY @"DJ_HOTFIX_CRASH_COUNT_KEY"
 
-static NSInteger const kContinuousCrashNeedToStop = 5;
-static CFTimeInterval const kCrashAfterExcutingHotFixTimeInterval = 5.0;
+static NSInteger const kContinuousCrashNeedToStop = 3;
+static CFTimeInterval const kCrashAfterExcutingHotFixTimeInterval = 3.0;
 
 @interface DJHotfixManager()
 
@@ -70,7 +70,11 @@ static CFTimeInterval const kCrashAfterExcutingHotFixTimeInterval = 5.0;
     NSInteger crashCount = [self readCrashCount];
     
     if (crashCount > kContinuousCrashNeedToStop) {
-        return;//连续5此执行hot fix 后，应用没活超过5秒钟
+        //连续执行hot fix 后，应用没活超过kCrashAfterExcutingHotFixTimeInterval
+        [self.hotFixHelper removeLocalJSContent];
+        [self setCrashCount:0];
+        
+        return;
     }
     
     crashCount ++;
@@ -128,7 +132,6 @@ static CFTimeInterval const kCrashAfterExcutingHotFixTimeInterval = 5.0;
                 if (data.length > 0) {
                     NSString *jsContentNew =[[NSString alloc] initWithData:data encoding:NSUTF8StringEncoding];
                     if ([weakSelf checkJSAvaliable:jsContentNew withEncryptionMd5:weakSelf.tmpMd5FromServer]) {
-                        [self setCrashCount:0];
                         [self.hotFixHelper saveCacheValue:weakSelf.tmpMd5FromServer forKey:DJ_HOT_MD5_FROM_SERVER_CACHE_KEY];
                         [weakSelf.hotFixHelper saveJSContent:data];
                         NSString *appVersion = [weakSelf appVersion];

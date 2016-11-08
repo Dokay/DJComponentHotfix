@@ -43,6 +43,17 @@
     return [self p_saveJSFileWithData:jsContentData];
 }
 
+/**
+ *  删除本地的JS 补丁文件
+ */
+- (void)removeLocalJSContent
+{
+    NSString *filePath = [self p_jsCacheFilePath];
+    if (filePath && [[NSFileManager defaultManager] fileExistsAtPath:filePath]) {
+        [[NSFileManager defaultManager] removeItemAtPath:filePath error:nil];
+    }
+}
+
 - (NSString *)jsContentCached
 {
     return [self p_readJSFileFromLocal];

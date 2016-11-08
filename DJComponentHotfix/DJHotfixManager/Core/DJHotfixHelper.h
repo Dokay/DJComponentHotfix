@@ -42,6 +42,11 @@
 - (void)saveJSContent:(NSData *)jsContentData;
 
 /**
+ *  删除本地的JS 补丁文件
+ */
+- (void)removeLocalJSContent;
+
+/**
  *  解密Md5
  *
  *  @param md5Encryption 加密的Md5
