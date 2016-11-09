@@ -42,6 +42,7 @@
 		4E0D485A1D475A3600CA7510 /* RSA.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RSA.m; sourceTree = "<group>"; };
 		4E0D9DEF1CAA20DF00449965 /* demo.js */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.javascript; path = demo.js; sourceTree = "<group>"; };
 		4E4EEE041D4A20AA00F4BCED /* demoSimple.js */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.javascript; path = demoSimple.js; sourceTree = "<group>"; };
+		4E8E81FE1DD30FD8003194E0 /* DJComponentHotfix.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = DJComponentHotfix.entitlements; sourceTree = "<group>"; };
 		628A12DA0560D89F6921820F /* Pods-DJComponentHotfix.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-DJComponentHotfix.release.xcconfig"; path = "Pods/Target Support Files/Pods-DJComponentHotfix/Pods-DJComponentHotfix.release.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -79,6 +80,7 @@
 		4E006C8D1C48D04C005664D3 /* DJComponentHotfix */ = {
 			isa = PBXGroup;
 			children = (
+				4E8E81FE1DD30FD8003194E0 /* DJComponentHotfix.entitlements */,
 				4E0D48521D475A3600CA7510 /* DJHotfixManager */,
 				4E006C911C48D04C005664D3 /* AppDelegate.h */,
 				4E006C921C48D04C005664D3 /* AppDelegate.m */,
@@ -183,6 +185,12 @@
 				TargetAttributes = {
 					4E006C8A1C48D04C005664D3 = {
 						CreatedOnToolsVersion = 7.2;
+						DevelopmentTeam = XVEP6G79H7;
+						SystemCapabilities = {
+							com.apple.Keychain = {
+								enabled = 1;
+							};
+						};
 					};
 				};
 			};
@@ -379,6 +387,8 @@
 			baseConfigurationReference = 3541726D53941775050DA85A /* Pods-DJComponentHotfix.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_ENTITLEMENTS = DJComponentHotfix/DJComponentHotfix.entitlements;
+				DEVELOPMENT_TEAM = XVEP6G79H7;
 				INFOPLIST_FILE = DJComponentHotfix/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 7.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
@@ -392,6 +402,8 @@
 			baseConfigurationReference = 628A12DA0560D89F6921820F /* Pods-DJComponentHotfix.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_ENTITLEMENTS = DJComponentHotfix/DJComponentHotfix.entitlements;
+				DEVELOPMENT_TEAM = XVEP6G79H7;
 				INFOPLIST_FILE = DJComponentHotfix/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 7.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
