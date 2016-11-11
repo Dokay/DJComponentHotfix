@@ -25,6 +25,6 @@ Pod::Spec.new do |s|
 	core.exclude_files = 'DJComponentHotfix/DJHotfixManager/Core/AppDelegate+DJLaunchProtect.h','DJComponentHotfix/DJHotfixManager/Core/AppDelegate+DJLaunchProtect.m'
 	core.requires_arc = true
 	core.dependency 'JSPatch'
-    core.dependency 'DJHotfixManager/RSA'
+    core.dependency 'DJComponentHotfix/RSA'
   end
 end
