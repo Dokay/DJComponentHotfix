@@ -1,6 +1,6 @@
 # DJHotfixManager
 
-__DJHotfixManager 是使用JSPatch做Hotfix的一种客户端方案.__
+__DJComponentHotfix 是使用JSPatch做Hotfix的一种客户端方案.__
 
 ## 运行要求
 * Xcode 7 or higher

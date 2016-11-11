@@ -1,6 +1,6 @@
 Pod::Spec.new do |s|
-  s.name         = "DJHotfixManager"
-  s.version      = "0.1.0"
+  s.name         = "DJComponentHotfix"
+  s.version      = "0.1.1"
   s.summary      = "A short description of DJHotfixManager."
 
   s.description  = <<-DESC
