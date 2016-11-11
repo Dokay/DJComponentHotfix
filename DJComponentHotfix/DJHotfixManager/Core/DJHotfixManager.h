@@ -11,14 +11,14 @@
 
 @protocol DJHotfixManagerDeleagte <NSObject>
 
-- (void)hotfixSuccessFormServer:(BOOL)bFromServer;
+- (void)applyPatchSuccess:(BOOL)isFromServer;
 
 @end
 
 @interface DJHotfixManager : NSObject
 
 @property (nonatomic, readonly) NSObject<DJHotfixHelperProtocol> *hotFixHelper;
-@property (nonatomic, weak) NSObject<DJHotfixManagerDeleagte> *delegate;
+@property (nonatomic, weak)     NSObject<DJHotfixManagerDeleagte> *delegate;
 
 - (instancetype)initWithHelper:(NSObject<DJHotfixHelperProtocol> *)helper;
 

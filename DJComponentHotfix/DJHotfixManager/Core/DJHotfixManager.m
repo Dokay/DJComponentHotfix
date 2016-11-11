@@ -97,8 +97,8 @@ static CFTimeInterval const kCrashAfterExcutingHotFixTimeInterval = 3.0;
         
         if ([self checkJSAvaliable:jsContent withEncryptionMd5:encryptionMd5]) {
             [self excuteJS:jsContent];
-            if (self.delegate != nil && [self.delegate respondsToSelector:@selector(hotfixSuccessFormServer:)]) {
-                [self.delegate hotfixSuccessFormServer:self.bLoadingFromServer];
+            if (self.delegate != nil && [self.delegate respondsToSelector:@selector(applyPatchSuccess:)]) {
+                [self.delegate applyPatchSuccess:self.bLoadingFromServer];
             }
         }
     } @catch (NSException *exception) {

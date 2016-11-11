@@ -10,6 +10,7 @@
 #import "JPViewController.h"
 #import "JPEngine.h"
 #import "DJHotfixManager.h"
+#import "AppDelegate+DJLaunchProtect.h"
 
 #define KPrivateRSAKey @"-----BEGIN PRIVATE KEY-----\nMIICdgIBADANBgkqhkiG9w0BAQEFAASCAmAwggJcAgEAAoGBAN4N32iNuFV9MwnC\nSXSm1bzGjNDhdQO3WyWh5y9myGWDkCHUtBsavNgpUFNR6yXn8jSHehUZlIxEae3D\nnYpkjhyt750xusV2dmDYdV2F5BZlMmmvbHB+IDO+N7NV0ACIsv5Ual5RZrqvlVfp\nl09j2t4EZqoogZ8Y1AfD0JOZXJ8NAgMBAAECgYEA0JYDeHk34MY8vTwOOE/Hkw6H\nlGdUvers6crOGc7ZC9Kr/7uIe7WAEyWr2LioxPC+qe1hFpTy31gckUYhpLCUdEdV\n9DEsgiWe2CUcQcpsdER6XJog84uDEVgatAzLt7Tz5nKwD7MY+yGFiTvmyukVMNhD\n66ntqN3q4KtfWedRQhkCQQD+/Ba3pThv26/wv8GjcTilZoMM/Zy558LV+sTMfg21\nFGpprH72QoxRdudC5Tvo4DzHfG9iUx+56xAIzCukNXvbAkEA3vA3mHIreA7lBLvC\ndqUjdPeq97UFw+kDCYFNv9q90h2gxbaNVKsDL0R6YDgBu5msM6e4ZFqMZYojCyIO\n/WX5NwJADGRR8lDcQktp7IhVL81D1H375ni40iwaQu3x/IIvxlocpdAVR4CKczcV\nHCIp3DJxobxBaYTiqNVsrRDHGi7jOwJAGNpauEnyAp5WdaKg2S0ruLxreNXbYK23\nQvYBPuQZyTS4WZIyS0ANSNWvds6HkuxcwB1wdu+JO0CdC36ugR0/HQJADa8mszbC\nvMa00H52JYedk7ehU+l/YmPWdnjCui1Ix/X29lIdgEolbiUECZT08KCxYu+sCnIs\nWwHAzqOdKK1oxQ==\n-----END PRIVATE KEY-----"
 
@@ -37,7 +38,7 @@
 
 //可以考虑本地先执行本地缓存的，根据服务端的信息判断有没有最新的补丁
 
-@interface AppDelegate ()
+@interface AppDelegate ()<DJHotfixManagerDeleagte>
 
 @property (nonatomic, strong) DJHotfixManager *aDJHotfixManager;
 
@@ -45,6 +46,21 @@
 
 @implementation AppDelegate
 
+- (instancetype)init
+{
+    self = [super init];
+    if (self) {
+        [self dj_setDJLaunchProtectEnable:YES];
+        
+        __weak AppDelegate *weakSelf = self;
+        [self dj_setLaunchFail:^BOOL{
+           //处理crash，此处可以做一些保守的保护，比如删除本地无用数据库，展示友好的崩溃通知界面
+            [weakSelf requestHotFixAPIFromServer];//由于applicationDidBecomeActive中放了执行打补丁的代码，这里可以不再执行
+            return YES;
+        }];
+    }
+    return self;
+}
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {
     // Override point for customization after application launch.
@@ -120,11 +136,24 @@
     [task resume];
 }
 
+#pragma mark - DJHotfixManagerDeleagte
+- (void)applyPatchSuccess:(BOOL)isFromServer
+{
+    if (isFromServer) {
+        //hot fix 完毕后继续启动
+        DJLaunchCompleteBlock normalLaunchBlock = [self dj_normalLaunchBlock];
+        if (normalLaunchBlock) {
+            normalLaunchBlock();
+        }
+    }
+}
+
 - (DJHotfixManager *)aDJHotfixManager
 {
     if (_aDJHotfixManager == nil) {
         _aDJHotfixManager = [DJHotfixManager new];
         _aDJHotfixManager.hotFixHelper.rsa_public_key = kPublicESAKey;
+        _aDJHotfixManager.delegate = self;
     }
     return _aDJHotfixManager;
 }

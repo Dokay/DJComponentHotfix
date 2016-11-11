@@ -19,6 +19,7 @@
 		4E0D48691D475A3600CA7510 /* RSA.m in Sources */ = {isa = PBXBuildFile; fileRef = 4E0D485A1D475A3600CA7510 /* RSA.m */; };
 		4E0D9DF11CAA20DF00449965 /* demo.js in Resources */ = {isa = PBXBuildFile; fileRef = 4E0D9DEF1CAA20DF00449965 /* demo.js */; };
 		4E4EEE061D4A20AA00F4BCED /* demoSimple.js in Resources */ = {isa = PBXBuildFile; fileRef = 4E4EEE041D4A20AA00F4BCED /* demoSimple.js */; };
+		4E64C7521DD5A58900697F5F /* AppDelegate+DJLaunchProtect.m in Sources */ = {isa = PBXBuildFile; fileRef = 4E64C7511DD5A58900697F5F /* AppDelegate+DJLaunchProtect.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -42,6 +43,8 @@
 		4E0D485A1D475A3600CA7510 /* RSA.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RSA.m; sourceTree = "<group>"; };
 		4E0D9DEF1CAA20DF00449965 /* demo.js */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.javascript; path = demo.js; sourceTree = "<group>"; };
 		4E4EEE041D4A20AA00F4BCED /* demoSimple.js */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.javascript; path = demoSimple.js; sourceTree = "<group>"; };
+		4E64C7501DD5A58900697F5F /* AppDelegate+DJLaunchProtect.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "AppDelegate+DJLaunchProtect.h"; sourceTree = "<group>"; };
+		4E64C7511DD5A58900697F5F /* AppDelegate+DJLaunchProtect.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "AppDelegate+DJLaunchProtect.m"; sourceTree = "<group>"; };
 		4E8E81FE1DD30FD8003194E0 /* DJComponentHotfix.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = DJComponentHotfix.entitlements; sourceTree = "<group>"; };
 		628A12DA0560D89F6921820F /* Pods-DJComponentHotfix.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-DJComponentHotfix.release.xcconfig"; path = "Pods/Target Support Files/Pods-DJComponentHotfix/Pods-DJComponentHotfix.release.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -121,6 +124,8 @@
 				4E0D48571D475A3600CA7510 /* DJHotfixManager.m */,
 				4E0D48541D475A3600CA7510 /* DJHotfixHelper.h */,
 				4E0D48551D475A3600CA7510 /* DJHotfixHelper.m */,
+				4E64C7501DD5A58900697F5F /* AppDelegate+DJLaunchProtect.h */,
+				4E64C7511DD5A58900697F5F /* AppDelegate+DJLaunchProtect.m */,
 			);
 			path = Core;
 			sourceTree = "<group>";
@@ -279,6 +284,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				4E64C7521DD5A58900697F5F /* AppDelegate+DJLaunchProtect.m in Sources */,
 				4E0D48691D475A3600CA7510 /* RSA.m in Sources */,
 				4E006C961C48D04C005664D3 /* JPViewController.m in Sources */,
 				4E006C931C48D04C005664D3 /* AppDelegate.m in Sources */,
