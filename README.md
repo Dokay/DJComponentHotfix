@@ -1,6 +1,6 @@
 # DJHotfixManager
 
-__DJHotfixManager 是使用JSPatch做Hotfix的种一客户端方案.__
+__DJHotfixManager 是使用JSPatch做Hotfix的一种客户端方案.__
 
 ## 运行要求
 * Xcode 7 or higher
@@ -27,7 +27,7 @@ pod 'DJComponentHotfix'
 * DJHotfixManager 提供了基本的补丁下载已经执行的逻辑。
 * DJHotfixHelper 提供了简单的存储和数据校验。
 * DJHotfixHelperProtocol <tt>DJHotfixHelper</tt> 实现了该协议。建议自己实现该协议来实现更安全的存储与校验策略。
-
+* AppDelegate (DJLaunchProtect) 实现了启动崩溃保护机制。
 
 ##JSPatch
     
