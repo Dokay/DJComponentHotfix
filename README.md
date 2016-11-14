@@ -1,4 +1,4 @@
-# DJHotfixManager
+# DJComponentHotfix
 
 __DJComponentHotfix 是使用JSPatch做Hotfix的一种客户端方案.__
 
