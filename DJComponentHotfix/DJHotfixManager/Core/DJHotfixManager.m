@@ -149,7 +149,7 @@ static CFTimeInterval const kCrashAfterExcutingHotFixTimeInterval = 3.0;
 
 - (BOOL)checkJSAvaliable:(NSString *)jsContent withEncryptionMd5:(NSString *)encryptionMd5
 {
-    NSString *realMd5 = [self.hotFixHelper jsRealMd5]; 
+    NSString *realMd5 = [self.hotFixHelper md5ForContent:jsContent];
     NSString *decryptionMd5 = [self.hotFixHelper decryptionMd5:encryptionMd5];
     if ([[realMd5 uppercaseString] isEqualToString:[decryptionMd5 uppercaseString]]) {
         return jsContent.length > 0 && ([jsContent rangeOfString:@"require"].location != NSNotFound);

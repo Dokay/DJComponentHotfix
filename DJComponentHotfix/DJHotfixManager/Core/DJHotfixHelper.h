@@ -56,11 +56,11 @@
 - (NSString *)decryptionMd5:(NSString *)md5Encryption;
 
 /**
- *  获取本地下载好的js文件Md5
+ *  计算js文件Md5
  *
  *  @return md5
  */
-- (NSString *)jsRealMd5;
+- (NSString *)md5ForContent:(NSString *)jsContent;
 
 /**
  *  验证md5的公钥

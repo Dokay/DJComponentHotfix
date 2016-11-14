@@ -59,12 +59,16 @@
     return [self p_readJSFileFromLocal];
 }
 
-- (NSString *)jsRealMd5
+/**
+ *  计算js文件Md5
+ *
+ *  @return md5
+ */
+- (NSString *)md5ForContent:(NSString *)jsContent
 {
-    NSString *filePath = [self p_jsCacheFilePath];
-    if (filePath && [[NSFileManager defaultManager] fileExistsAtPath:filePath]) {
-        NSData *fileData = [NSData dataWithContentsOfFile:filePath];
-        return [self p_md5WithData:fileData];
+    if (jsContent.length > 0) {
+        NSData *data = [jsContent dataUsingEncoding:NSUTF8StringEncoding];
+        return [self p_md5WithData:data];
     }
     return @"";
 }
