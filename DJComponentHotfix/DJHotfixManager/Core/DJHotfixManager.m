@@ -128,6 +128,9 @@ static CFTimeInterval const kCrashAfterExcutingHotFixTimeInterval = 3.0;
         NSURLSessionDataTask *task = [[NSURLSession sharedSession] dataTaskWithURL:requestUrl completionHandler:^(NSData * _Nullable data, NSURLResponse * _Nullable response, NSError * _Nullable error) {
             if (error) {
                 NSLog(@"JS download Error: %@", error);
+                if ([weakSelf.delegate respondsToSelector:@selector(downloadFail)]) {
+                    [weakSelf.delegate downloadFail];
+                }
             } else {
                 if (data.length > 0) {
                     NSString *jsContentNew =[[NSString alloc] initWithData:data encoding:NSUTF8StringEncoding];

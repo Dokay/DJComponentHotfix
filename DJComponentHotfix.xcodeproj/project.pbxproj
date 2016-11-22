@@ -18,8 +18,8 @@
 		4E0D48681D475A3600CA7510 /* DJHotfixManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 4E0D48571D475A3600CA7510 /* DJHotfixManager.m */; };
 		4E0D48691D475A3600CA7510 /* RSA.m in Sources */ = {isa = PBXBuildFile; fileRef = 4E0D485A1D475A3600CA7510 /* RSA.m */; };
 		4E0D9DF11CAA20DF00449965 /* demo.js in Resources */ = {isa = PBXBuildFile; fileRef = 4E0D9DEF1CAA20DF00449965 /* demo.js */; };
-		4E4EEE061D4A20AA00F4BCED /* demoSimple.js in Resources */ = {isa = PBXBuildFile; fileRef = 4E4EEE041D4A20AA00F4BCED /* demoSimple.js */; };
 		4E64C7521DD5A58900697F5F /* AppDelegate+DJLaunchProtect.m in Sources */ = {isa = PBXBuildFile; fileRef = 4E64C7511DD5A58900697F5F /* AppDelegate+DJLaunchProtect.m */; };
+		4E7DC1AC1DE55CC300717191 /* DJLaunchCrashProtectHelper.m in Sources */ = {isa = PBXBuildFile; fileRef = 4E7DC1AB1DE55CC300717191 /* DJLaunchCrashProtectHelper.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -42,9 +42,10 @@
 		4E0D48591D475A3600CA7510 /* RSA.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RSA.h; sourceTree = "<group>"; };
 		4E0D485A1D475A3600CA7510 /* RSA.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RSA.m; sourceTree = "<group>"; };
 		4E0D9DEF1CAA20DF00449965 /* demo.js */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.javascript; path = demo.js; sourceTree = "<group>"; };
-		4E4EEE041D4A20AA00F4BCED /* demoSimple.js */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.javascript; path = demoSimple.js; sourceTree = "<group>"; };
 		4E64C7501DD5A58900697F5F /* AppDelegate+DJLaunchProtect.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "AppDelegate+DJLaunchProtect.h"; sourceTree = "<group>"; };
 		4E64C7511DD5A58900697F5F /* AppDelegate+DJLaunchProtect.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "AppDelegate+DJLaunchProtect.m"; sourceTree = "<group>"; };
+		4E7DC1AA1DE55CC300717191 /* DJLaunchCrashProtectHelper.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DJLaunchCrashProtectHelper.h; sourceTree = "<group>"; };
+		4E7DC1AB1DE55CC300717191 /* DJLaunchCrashProtectHelper.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DJLaunchCrashProtectHelper.m; sourceTree = "<group>"; };
 		4E8E81FE1DD30FD8003194E0 /* DJComponentHotfix.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = DJComponentHotfix.entitlements; sourceTree = "<group>"; };
 		628A12DA0560D89F6921820F /* Pods-DJComponentHotfix.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-DJComponentHotfix.release.xcconfig"; path = "Pods/Target Support Files/Pods-DJComponentHotfix/Pods-DJComponentHotfix.release.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -92,7 +93,6 @@
 				4E006C9A1C48D04C005664D3 /* Assets.xcassets */,
 				4E006C9C1C48D04C005664D3 /* LaunchScreen.storyboard */,
 				4E006C9F1C48D04C005664D3 /* Info.plist */,
-				4E4EEE041D4A20AA00F4BCED /* demoSimple.js */,
 				4E0D9DEF1CAA20DF00449965 /* demo.js */,
 				4E006C8E1C48D04C005664D3 /* Supporting Files */,
 			);
@@ -126,6 +126,8 @@
 				4E0D48551D475A3600CA7510 /* DJHotfixHelper.m */,
 				4E64C7501DD5A58900697F5F /* AppDelegate+DJLaunchProtect.h */,
 				4E64C7511DD5A58900697F5F /* AppDelegate+DJLaunchProtect.m */,
+				4E7DC1AA1DE55CC300717191 /* DJLaunchCrashProtectHelper.h */,
+				4E7DC1AB1DE55CC300717191 /* DJLaunchCrashProtectHelper.m */,
 			);
 			path = Core;
 			sourceTree = "<group>";
@@ -223,7 +225,6 @@
 			buildActionMask = 2147483647;
 			files = (
 				4E006C9E1C48D04C005664D3 /* LaunchScreen.storyboard in Resources */,
-				4E4EEE061D4A20AA00F4BCED /* demoSimple.js in Resources */,
 				4E006C9B1C48D04C005664D3 /* Assets.xcassets in Resources */,
 				4E0D9DF11CAA20DF00449965 /* demo.js in Resources */,
 			);
@@ -244,7 +245,7 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "diff \"${PODS_ROOT}/../Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [[ $? != 0 ]] ; then\n    cat << EOM\nerror: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\nEOM\n    exit 1\nfi\n";
+			shellScript = "diff \"${PODS_ROOT}/../Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n";
 			showEnvVarsInLog = 0;
 		};
 		DD1CDA8459D5D98AE24D05A3 /* [CP] Embed Pods Frameworks */ = {
@@ -286,6 +287,7 @@
 			files = (
 				4E64C7521DD5A58900697F5F /* AppDelegate+DJLaunchProtect.m in Sources */,
 				4E0D48691D475A3600CA7510 /* RSA.m in Sources */,
+				4E7DC1AC1DE55CC300717191 /* DJLaunchCrashProtectHelper.m in Sources */,
 				4E006C961C48D04C005664D3 /* JPViewController.m in Sources */,
 				4E006C931C48D04C005664D3 /* AppDelegate.m in Sources */,
 				4E0D48671D475A3600CA7510 /* DJHotfixHelper.m in Sources */,

@@ -12,12 +12,13 @@
 @protocol DJHotfixManagerDeleagte <NSObject>
 
 - (void)applyPatchSuccess:(BOOL)isFromServer;
+- (void)downloadFail;
 
 @end
 
 @interface DJHotfixManager : NSObject
 
-@property (nonatomic, readonly) NSObject<DJHotfixHelperProtocol> *hotFixHelper;
+@property (nonatomic, readonly) NSObject<DJHotfixHelperProtocol> *hotFixHelper;//默认是DJHotfixHelper，这里使用者可以自己实现DJHotfixHelperProtocol
 @property (nonatomic, weak)     NSObject<DJHotfixManagerDeleagte> *delegate;
 
 - (instancetype)initWithHelper:(NSObject<DJHotfixHelperProtocol> *)helper;
