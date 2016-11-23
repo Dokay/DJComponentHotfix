@@ -96,7 +96,10 @@
     NSString *oldMd5 = [self.aDJHotfixManager readLastestMd5];
     NSString *appVersion = [[[NSBundle mainBundle] infoDictionary] objectForKey:@"CFBundleShortVersionString"];
     
-    NSString *url = [NSString stringWithFormat:@"http://www.douzhongxu.com/jspatch/hot_fix_config?old_md5=%@&version=%@udid=%@",oldMd5,appVersion,@"111"];
+//    NSString *url = [NSString stringWithFormat:@"http://www.douzhongxu.com/jspatch/hot_fix_config?old_md5=%@&version=%@udid=%@",oldMd5,appVersion,@"111"];
+    
+    NSString *url = [NSString stringWithFormat:@"http://www.douzhongxu.com/jspatch/hot_fix_zip_config?old_md5=%@&version=%@udid=%@",oldMd5,appVersion,@"111"];
+    
     NSURL *requestUrl = [NSURL URLWithString:url];
     NSURLSessionDataTask *task = [[NSURLSession sharedSession] dataTaskWithURL:requestUrl completionHandler:^(NSData * _Nullable data, NSURLResponse * _Nullable response, NSError * _Nullable error) {
         if (error) {
@@ -110,7 +113,12 @@
                 NSString *md5 = [hotFixDictionary valueForKey:@"md5"];
                 NSString *jsDonwloadUrl = [hotFixDictionary valueForKey:@"downloadurl"];
                 
+                NSString *zipPassWord = [hotFixDictionary valueForKey:@"password"];
+                BOOL isZipEnable = [[hotFixDictionary valueForKey:@"zip"] boolValue];
+                
                 if (md5.length > 0 && jsDonwloadUrl.length > 0) {
+                    [weakSelf.aDJHotfixManager setTmpZipPassword:zipPassWord];
+                    weakSelf.aDJHotfixManager.serverZipEnable = isZipEnable;
                     [weakSelf.aDJHotfixManager setServerMd5:md5];
                     [weakSelf.aDJHotfixManager excuteJSFromServerWithUrl:jsDonwloadUrl];
                 }

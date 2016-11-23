@@ -54,7 +54,7 @@
     }
 }
 
-- (NSString *)jsContentCached
+- (NSData *)jsContentCached
 {
     return [self p_readJSFileFromLocal];
 }
@@ -90,14 +90,14 @@
     }
 }
 
-- (NSString *)p_readJSFileFromLocal
+- (NSData *)p_readJSFileFromLocal
 {
     NSString *filePath = [self p_jsCacheFilePath];
     if (filePath && [[NSFileManager defaultManager] fileExistsAtPath:filePath]) {
         NSData *fileData = [NSData dataWithContentsOfFile:filePath];
         if (fileData) {
-            NSString *jsContentNew =[[NSString alloc] initWithData:fileData encoding:NSUTF8StringEncoding];
-            return jsContentNew;
+            
+            return fileData;
         }
     }
     return nil;

@@ -6,7 +6,8 @@
 target 'DJComponentHotfix' do
     
 pod 'JSPatch'
-#pod 'SSZipArchive'
+pod 'SSZipArchive'
+#pod 'ZipKit'
 
 end
 

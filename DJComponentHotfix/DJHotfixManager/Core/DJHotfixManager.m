@@ -9,6 +9,7 @@
 #import "DJHotfixManager.h"
 #import "JPEngine.h"
 #import <QuartzCore/QuartzCore.h>
+#import "DJZipHelper.h"
 
 #define KTestJSAlert @"\
 var alertView = require('UIAlertView').alloc().init();\
@@ -21,6 +22,8 @@ alertView.show(); \
 #define DJ_HOT_MD5_FROM_SERVER_CACHE_KEY @"DJ_HOT_MD5_FROM_SERVER_CACHE_KEY"
 #define DJ_HOT_VERSION_CACHE_KEY @"DJ_HOT_VERSION_CACHE_KEY"
 #define DJ_HOTFIX_CRASH_COUNT_KEY @"DJ_HOTFIX_CRASH_COUNT_KEY"
+#define DJ_HOTFIX_IS_ZIP_SUPPORT_KEY @"DJ_HOTFIX_IS_ZIP_SUPPORT_KEY"
+#define DJ_HOTFIX_ZIP_PASSWORD_KEY @"DJ_HOTFIX_ZIP_PASSWORD_KEY"
 
 static NSInteger const kContinuousCrashNeedToStop = 3;
 static CFTimeInterval const kCrashAfterExcutingHotFixTimeInterval = 3.0;
@@ -91,8 +94,18 @@ static CFTimeInterval const kCrashAfterExcutingHotFixTimeInterval = 3.0;
             //updated Version
             return;
         }
+        NSString *jsContent;
+        BOOL isZipSupport = [(NSNumber *)[self.hotFixHelper valueForCacheKey:DJ_HOTFIX_IS_ZIP_SUPPORT_KEY] boolValue];
+        NSData *jsData = [self.hotFixHelper jsContentCached];
+        if (isZipSupport) {
+            //解压缩
+            NSString *zipPassword = (NSString *)[self.hotFixHelper valueForCacheKey:DJ_HOTFIX_ZIP_PASSWORD_KEY];
+            jsContent = [DJZipHelper unzipJSWithData:jsData password:zipPassword];
+            
+        }else{
+            jsContent =[[NSString alloc] initWithData:jsData encoding:NSUTF8StringEncoding];
+        }
         
-        NSString *jsContent = [self.hotFixHelper jsContentCached];
         NSString *encryptionMd5 = [self readLastestMd5];
         
         if ([self checkJSAvaliable:jsContent withEncryptionMd5:encryptionMd5]) {
@@ -133,12 +146,24 @@ static CFTimeInterval const kCrashAfterExcutingHotFixTimeInterval = 3.0;
                 }
             } else {
                 if (data.length > 0) {
-                    NSString *jsContentNew =[[NSString alloc] initWithData:data encoding:NSUTF8StringEncoding];
+                    NSString *jsContentNew;
+                    if (weakSelf.serverZipEnable) {
+                        //解压缩
+                        jsContentNew = [DJZipHelper unzipJSWithData:data password:self.tmpZipPassword];
+                    }else{
+                        jsContentNew =[[NSString alloc] initWithData:data encoding:NSUTF8StringEncoding];
+                    }
+
                     if ([weakSelf checkJSAvaliable:jsContentNew withEncryptionMd5:weakSelf.tmpMd5FromServer]) {
                         [self.hotFixHelper saveCacheValue:weakSelf.tmpMd5FromServer forKey:DJ_HOT_MD5_FROM_SERVER_CACHE_KEY];
                         [weakSelf.hotFixHelper saveJSContent:data];
                         NSString *appVersion = [weakSelf appVersion];
                         [self.hotFixHelper saveCacheValue:appVersion forKey:DJ_HOT_VERSION_CACHE_KEY];
+                        [self.hotFixHelper saveCacheValue:@(self.serverZipEnable) forKey:DJ_HOTFIX_IS_ZIP_SUPPORT_KEY];
+                        if (self.serverZipEnable && self.tmpZipPassword.length > 0) {
+                            [self.hotFixHelper saveCacheValue:self.tmpZipPassword forKey:DJ_HOTFIX_ZIP_PASSWORD_KEY];
+                            self.tmpZipPassword = @"";//内存里清空密码
+                        }
                         [self excuteJSFromLocal];
                     }
                 }
@@ -154,12 +179,13 @@ static CFTimeInterval const kCrashAfterExcutingHotFixTimeInterval = 3.0;
 {
     NSString *realMd5 = [self.hotFixHelper md5ForContent:jsContent];
     NSString *decryptionMd5 = [self.hotFixHelper decryptionMd5:encryptionMd5];
+    
     if ([[realMd5 uppercaseString] isEqualToString:[decryptionMd5 uppercaseString]]) {
         return jsContent.length > 0 && ([jsContent rangeOfString:@"require"].location != NSNotFound);
     }else{
         return NO;
     }
-//    return jsContent.length > 0 && ([jsContent rangeOfString:@"require"].location != NSNotFound);
+    //    return jsContent.length > 0 && ([jsContent rangeOfString:@"require"].location != NSNotFound);
 }
 
 - (NSString *)readLastestMd5

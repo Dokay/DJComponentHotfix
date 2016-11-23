@@ -20,6 +20,8 @@
 
 @property (nonatomic, readonly) NSObject<DJHotfixHelperProtocol> *hotFixHelper;//默认是DJHotfixHelper，这里使用者可以自己实现DJHotfixHelperProtocol
 @property (nonatomic, weak)     NSObject<DJHotfixManagerDeleagte> *delegate;
+@property (nonatomic, assign) BOOL serverZipEnable;
+@property (nonatomic, strong) NSString *tmpZipPassword;
 
 - (instancetype)initWithHelper:(NSObject<DJHotfixHelperProtocol> *)helper;
 

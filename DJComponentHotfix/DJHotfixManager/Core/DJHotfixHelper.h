@@ -32,7 +32,7 @@
  *
  *  @return 补丁内容
  */
-- (NSString *)jsContentCached;
+- (NSData *)jsContentCached;
 
 /**
  *  保存服务端下载的js文件
