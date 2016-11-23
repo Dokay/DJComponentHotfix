@@ -10,7 +10,7 @@ git -C . push --all
 
 echo "push to cocoapods trunk..."
 
-pod trunk push
+pod trunk push --allow-warnings
 
 #git tag -a 1.0.1 "comment"
 #pod lib lint --verbose --allow-warnings
