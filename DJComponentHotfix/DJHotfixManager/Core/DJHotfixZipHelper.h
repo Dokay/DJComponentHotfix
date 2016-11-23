@@ -1,5 +1,5 @@
 //
-//  DJZipHelper.h
+//  DJHotfixZipHelper.h
 //  DJComponentHotfix
 //
 //  Created by Dokay on 16/11/23.
@@ -8,7 +8,7 @@
 
 #import <Foundation/Foundation.h>
 
-@interface DJZipHelper : NSObject
+@interface DJHotfixZipHelper : NSObject
 
 + (NSString *)unzipJSWithData:(NSData *)data password:(NSString *)password;
 

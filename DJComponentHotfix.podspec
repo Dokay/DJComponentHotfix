@@ -1,6 +1,6 @@
 Pod::Spec.new do |s|
   s.name         = "DJComponentHotfix"
-  s.version      = "0.1.1"
+  s.version      = "0.2.0"
   s.summary      = "A short description of DJHotfixManager."
 
   s.description  = <<-DESC
@@ -26,5 +26,6 @@ Pod::Spec.new do |s|
 	core.requires_arc = true
 	core.dependency 'JSPatch'
     core.dependency 'DJComponentHotfix/RSA'
+	core.dependency 'SSZipArchive'
   end
 end

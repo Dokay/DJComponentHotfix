@@ -1,15 +1,15 @@
 //
-//  DJZipHelper.m
+//  DJHotfixZipHelper.m
 //  DJComponentHotfix
 //
 //  Created by Dokay on 16/11/23.
 //  Copyright © 2016年 dj226. All rights reserved.
 //
 
-#import "DJZipHelper.h"
+#import "DJHotfixZipHelper.h"
 #import "ZipArchive.h"
 
-@implementation DJZipHelper
+@implementation DJHotfixZipHelper
 
 + (NSString *)unzipJSWithData:(NSData *)data password:(NSString *)password
 {
@@ -29,14 +29,7 @@
     NSString *zipPath = [zipDirPath stringByAppendingPathComponent:@"js.zip"];
     [data writeToFile:zipPath options:0 error:&error];
     if (!error) {
-        ZipArchive *za = [[ZipArchive alloc] init];
-        if ([za UnzipOpenFile: zipPath Password:[DJZipHelper processPwd:password]]) {
-            BOOL ret = [za UnzipFileTo: zipDirPath overWrite: YES];
-            if (NO == ret){
-                
-            }
-            [za UnzipCloseFile];
-            
+        if ([SSZipArchive unzipFileAtPath:zipPath toDestination:zipDirPath overwrite:YES password:[DJHotfixZipHelper processPwd:password] error:&error]) {
             NSString *jsContent;
             NSArray *filesNameArray = [[NSFileManager defaultManager] contentsOfDirectoryAtPath:zipDirPath error:&error];
             

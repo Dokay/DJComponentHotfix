@@ -14,17 +14,11 @@
 		4E006C9B1C48D04C005664D3 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 4E006C9A1C48D04C005664D3 /* Assets.xcassets */; };
 		4E006C9E1C48D04C005664D3 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 4E006C9C1C48D04C005664D3 /* LaunchScreen.storyboard */; };
 		4E006CBE1C48D202005664D3 /* libz.1.2.5.tbd in Frameworks */ = {isa = PBXBuildFile; fileRef = 4E006CBD1C48D202005664D3 /* libz.1.2.5.tbd */; };
-		4E0BD3941DE589E60008E81C /* ioapi.c in Sources */ = {isa = PBXBuildFile; fileRef = 4E0BD38B1DE589E60008E81C /* ioapi.c */; };
-		4E0BD3951DE589E60008E81C /* mztools.c in Sources */ = {isa = PBXBuildFile; fileRef = 4E0BD38D1DE589E60008E81C /* mztools.c */; };
-		4E0BD3961DE589E60008E81C /* unzip.c in Sources */ = {isa = PBXBuildFile; fileRef = 4E0BD38F1DE589E60008E81C /* unzip.c */; };
-		4E0BD3971DE589E60008E81C /* zip.c in Sources */ = {isa = PBXBuildFile; fileRef = 4E0BD3911DE589E60008E81C /* zip.c */; };
-		4E0BD39D1DE58CA00008E81C /* ZipArchive.mm in Sources */ = {isa = PBXBuildFile; fileRef = 4E0BD39C1DE58CA00008E81C /* ZipArchive.mm */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
-		4E0BD3A01DE58CF30008E81C /* DJZipHelper.m in Sources */ = {isa = PBXBuildFile; fileRef = 4E0BD39F1DE58CF30008E81C /* DJZipHelper.m */; };
+		4E0BD3A51DE5A8A70008E81C /* DJHotfixZipHelper.m in Sources */ = {isa = PBXBuildFile; fileRef = 4E0BD3A41DE5A8A70008E81C /* DJHotfixZipHelper.m */; };
 		4E0D48671D475A3600CA7510 /* DJHotfixHelper.m in Sources */ = {isa = PBXBuildFile; fileRef = 4E0D48551D475A3600CA7510 /* DJHotfixHelper.m */; };
 		4E0D48681D475A3600CA7510 /* DJHotfixManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 4E0D48571D475A3600CA7510 /* DJHotfixManager.m */; };
 		4E0D48691D475A3600CA7510 /* RSA.m in Sources */ = {isa = PBXBuildFile; fileRef = 4E0D485A1D475A3600CA7510 /* RSA.m */; };
 		4E0D9DF11CAA20DF00449965 /* demo.js in Resources */ = {isa = PBXBuildFile; fileRef = 4E0D9DEF1CAA20DF00449965 /* demo.js */; };
-		4E64C7521DD5A58900697F5F /* AppDelegate+DJLaunchProtect.m in Sources */ = {isa = PBXBuildFile; fileRef = 4E64C7511DD5A58900697F5F /* AppDelegate+DJLaunchProtect.m */; };
 		4E7DC1AC1DE55CC300717191 /* DJLaunchCrashProtectHelper.m in Sources */ = {isa = PBXBuildFile; fileRef = 4E7DC1AB1DE55CC300717191 /* DJLaunchCrashProtectHelper.m */; };
 /* End PBXBuildFile section */
 
@@ -41,19 +35,9 @@
 		4E006C9D1C48D04C005664D3 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		4E006C9F1C48D04C005664D3 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		4E006CBD1C48D202005664D3 /* libz.1.2.5.tbd */ = {isa = PBXFileReference; lastKnownFileType = "sourcecode.text-based-dylib-definition"; name = libz.1.2.5.tbd; path = usr/lib/libz.1.2.5.tbd; sourceTree = SDKROOT; };
-		4E0BD38A1DE589E60008E81C /* crypt.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = crypt.h; sourceTree = "<group>"; };
-		4E0BD38B1DE589E60008E81C /* ioapi.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = ioapi.c; sourceTree = "<group>"; };
-		4E0BD38C1DE589E60008E81C /* ioapi.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ioapi.h; sourceTree = "<group>"; };
-		4E0BD38D1DE589E60008E81C /* mztools.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = mztools.c; sourceTree = "<group>"; };
-		4E0BD38E1DE589E60008E81C /* mztools.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = mztools.h; sourceTree = "<group>"; };
-		4E0BD38F1DE589E60008E81C /* unzip.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = unzip.c; sourceTree = "<group>"; };
-		4E0BD3901DE589E60008E81C /* unzip.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = unzip.h; sourceTree = "<group>"; };
-		4E0BD3911DE589E60008E81C /* zip.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = zip.c; sourceTree = "<group>"; };
-		4E0BD3921DE589E60008E81C /* zip.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = zip.h; sourceTree = "<group>"; };
-		4E0BD39B1DE58CA00008E81C /* ZipArchive.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ZipArchive.h; sourceTree = "<group>"; };
-		4E0BD39C1DE58CA00008E81C /* ZipArchive.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = ZipArchive.mm; sourceTree = "<group>"; };
-		4E0BD39E1DE58CF30008E81C /* DJZipHelper.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DJZipHelper.h; sourceTree = "<group>"; };
-		4E0BD39F1DE58CF30008E81C /* DJZipHelper.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DJZipHelper.m; sourceTree = "<group>"; };
+		4E0BD3A31DE5A8A70008E81C /* DJHotfixZipHelper.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DJHotfixZipHelper.h; sourceTree = "<group>"; };
+		4E0BD3A41DE5A8A70008E81C /* DJHotfixZipHelper.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DJHotfixZipHelper.m; sourceTree = "<group>"; };
+		4E0BD3A61DE5A8FD0008E81C /* DJComponentHotfix.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = DJComponentHotfix.h; sourceTree = "<group>"; };
 		4E0D48541D475A3600CA7510 /* DJHotfixHelper.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DJHotfixHelper.h; sourceTree = "<group>"; };
 		4E0D48551D475A3600CA7510 /* DJHotfixHelper.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DJHotfixHelper.m; sourceTree = "<group>"; };
 		4E0D48561D475A3600CA7510 /* DJHotfixManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DJHotfixManager.h; sourceTree = "<group>"; };
@@ -61,8 +45,6 @@
 		4E0D48591D475A3600CA7510 /* RSA.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RSA.h; sourceTree = "<group>"; };
 		4E0D485A1D475A3600CA7510 /* RSA.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RSA.m; sourceTree = "<group>"; };
 		4E0D9DEF1CAA20DF00449965 /* demo.js */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.javascript; path = demo.js; sourceTree = "<group>"; };
-		4E64C7501DD5A58900697F5F /* AppDelegate+DJLaunchProtect.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "AppDelegate+DJLaunchProtect.h"; sourceTree = "<group>"; };
-		4E64C7511DD5A58900697F5F /* AppDelegate+DJLaunchProtect.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "AppDelegate+DJLaunchProtect.m"; sourceTree = "<group>"; };
 		4E7DC1AA1DE55CC300717191 /* DJLaunchCrashProtectHelper.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DJLaunchCrashProtectHelper.h; sourceTree = "<group>"; };
 		4E7DC1AB1DE55CC300717191 /* DJLaunchCrashProtectHelper.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DJLaunchCrashProtectHelper.m; sourceTree = "<group>"; };
 		4E8E81FE1DD30FD8003194E0 /* DJComponentHotfix.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = DJComponentHotfix.entitlements; sourceTree = "<group>"; };
@@ -127,38 +109,9 @@
 			name = "Supporting Files";
 			sourceTree = "<group>";
 		};
-		4E0BD3881DE589E60008E81C /* ZipArchive */ = {
-			isa = PBXGroup;
-			children = (
-				4E0BD3891DE589E60008E81C /* minizip */,
-				4E0BD39B1DE58CA00008E81C /* ZipArchive.h */,
-				4E0BD39C1DE58CA00008E81C /* ZipArchive.mm */,
-				4E0BD39E1DE58CF30008E81C /* DJZipHelper.h */,
-				4E0BD39F1DE58CF30008E81C /* DJZipHelper.m */,
-			);
-			path = ZipArchive;
-			sourceTree = "<group>";
-		};
-		4E0BD3891DE589E60008E81C /* minizip */ = {
-			isa = PBXGroup;
-			children = (
-				4E0BD38A1DE589E60008E81C /* crypt.h */,
-				4E0BD38B1DE589E60008E81C /* ioapi.c */,
-				4E0BD38C1DE589E60008E81C /* ioapi.h */,
-				4E0BD38D1DE589E60008E81C /* mztools.c */,
-				4E0BD38E1DE589E60008E81C /* mztools.h */,
-				4E0BD38F1DE589E60008E81C /* unzip.c */,
-				4E0BD3901DE589E60008E81C /* unzip.h */,
-				4E0BD3911DE589E60008E81C /* zip.c */,
-				4E0BD3921DE589E60008E81C /* zip.h */,
-			);
-			path = minizip;
-			sourceTree = "<group>";
-		};
 		4E0D48521D475A3600CA7510 /* DJHotfixManager */ = {
 			isa = PBXGroup;
 			children = (
-				4E0BD3881DE589E60008E81C /* ZipArchive */,
 				4E0D48531D475A3600CA7510 /* Core */,
 				4E0D48581D475A3600CA7510 /* RSA */,
 			);
@@ -172,10 +125,11 @@
 				4E0D48571D475A3600CA7510 /* DJHotfixManager.m */,
 				4E0D48541D475A3600CA7510 /* DJHotfixHelper.h */,
 				4E0D48551D475A3600CA7510 /* DJHotfixHelper.m */,
-				4E64C7501DD5A58900697F5F /* AppDelegate+DJLaunchProtect.h */,
-				4E64C7511DD5A58900697F5F /* AppDelegate+DJLaunchProtect.m */,
+				4E0BD3A31DE5A8A70008E81C /* DJHotfixZipHelper.h */,
+				4E0BD3A41DE5A8A70008E81C /* DJHotfixZipHelper.m */,
 				4E7DC1AA1DE55CC300717191 /* DJLaunchCrashProtectHelper.h */,
 				4E7DC1AB1DE55CC300717191 /* DJLaunchCrashProtectHelper.m */,
+				4E0BD3A61DE5A8FD0008E81C /* DJComponentHotfix.h */,
 			);
 			path = Core;
 			sourceTree = "<group>";
@@ -333,20 +287,14 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				4E64C7521DD5A58900697F5F /* AppDelegate+DJLaunchProtect.m in Sources */,
-				4E0BD3961DE589E60008E81C /* unzip.c in Sources */,
+				4E0BD3A51DE5A8A70008E81C /* DJHotfixZipHelper.m in Sources */,
 				4E0D48691D475A3600CA7510 /* RSA.m in Sources */,
 				4E7DC1AC1DE55CC300717191 /* DJLaunchCrashProtectHelper.m in Sources */,
-				4E0BD39D1DE58CA00008E81C /* ZipArchive.mm in Sources */,
 				4E006C961C48D04C005664D3 /* JPViewController.m in Sources */,
-				4E0BD3951DE589E60008E81C /* mztools.c in Sources */,
 				4E006C931C48D04C005664D3 /* AppDelegate.m in Sources */,
 				4E0D48671D475A3600CA7510 /* DJHotfixHelper.m in Sources */,
-				4E0BD3941DE589E60008E81C /* ioapi.c in Sources */,
-				4E0BD3971DE589E60008E81C /* zip.c in Sources */,
 				4E0D48681D475A3600CA7510 /* DJHotfixManager.m in Sources */,
 				4E006C901C48D04C005664D3 /* main.m in Sources */,
-				4E0BD3A01DE58CF30008E81C /* DJZipHelper.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

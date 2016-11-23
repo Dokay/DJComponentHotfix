@@ -9,7 +9,7 @@
 #import "DJHotfixManager.h"
 #import "JPEngine.h"
 #import <QuartzCore/QuartzCore.h>
-#import "DJZipHelper.h"
+#import "DJHotfixZipHelper.h"
 
 #define KTestJSAlert @"\
 var alertView = require('UIAlertView').alloc().init();\
@@ -100,7 +100,7 @@ static CFTimeInterval const kCrashAfterExcutingHotFixTimeInterval = 3.0;
         if (isZipSupport) {
             //解压缩
             NSString *zipPassword = (NSString *)[self.hotFixHelper valueForCacheKey:DJ_HOTFIX_ZIP_PASSWORD_KEY];
-            jsContent = [DJZipHelper unzipJSWithData:jsData password:zipPassword];
+            jsContent = [DJHotfixZipHelper unzipJSWithData:jsData password:zipPassword];
             
         }else{
             jsContent =[[NSString alloc] initWithData:jsData encoding:NSUTF8StringEncoding];
@@ -149,7 +149,7 @@ static CFTimeInterval const kCrashAfterExcutingHotFixTimeInterval = 3.0;
                     NSString *jsContentNew;
                     if (weakSelf.serverZipEnable) {
                         //解压缩
-                        jsContentNew = [DJZipHelper unzipJSWithData:data password:self.tmpZipPassword];
+                        jsContentNew = [DJHotfixZipHelper unzipJSWithData:data password:self.tmpZipPassword];
                     }else{
                         jsContentNew =[[NSString alloc] initWithData:data encoding:NSUTF8StringEncoding];
                     }
