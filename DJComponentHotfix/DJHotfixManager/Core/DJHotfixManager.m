@@ -99,8 +99,10 @@ static CFTimeInterval const kCrashAfterExcutingHotFixTimeInterval = 3.0;
         NSData *jsData = [self.hotFixHelper jsContentCached];
         if (isZipSupport) {
             //解压缩
-            NSString *zipPassword = (NSString *)[self.hotFixHelper valueForCacheKey:DJ_HOTFIX_ZIP_PASSWORD_KEY];
-            jsContent = [DJHotfixZipHelper unzipJSWithData:jsData password:zipPassword];
+//            NSString *zipPassword = (NSString *)[self.hotFixHelper valueForCacheKey:DJ_HOTFIX_ZIP_PASSWORD_KEY];
+            NSString *zipEncryptPassword = (NSString *)[self.hotFixHelper valueForCacheKey:DJ_HOT_MD5_FROM_SERVER_CACHE_KEY];
+            NSAssert(zipEncryptPassword.length > 16, @"bug");
+            jsContent = [DJHotfixZipHelper unzipJSWithData:jsData password:[zipEncryptPassword substringFromIndex:zipEncryptPassword.length - 16] andEncryptContent:(NSString *)[self.hotFixHelper valueForCacheKey:DJ_HOTFIX_ZIP_PASSWORD_KEY]];
             
         }else{
             jsContent =[[NSString alloc] initWithData:jsData encoding:NSUTF8StringEncoding];
@@ -149,7 +151,7 @@ static CFTimeInterval const kCrashAfterExcutingHotFixTimeInterval = 3.0;
                     NSString *jsContentNew;
                     if (weakSelf.serverZipEnable) {
                         //解压缩
-                        jsContentNew = [DJHotfixZipHelper unzipJSWithData:data password:self.tmpZipPassword];
+                        jsContentNew = [DJHotfixZipHelper unzipJSWithData:data password:[weakSelf.tmpMd5FromServer substringFromIndex:weakSelf.tmpMd5FromServer.length - 16] andEncryptContent:self.tmpZipPassword];
                     }else{
                         jsContentNew =[[NSString alloc] initWithData:data encoding:NSUTF8StringEncoding];
                     }

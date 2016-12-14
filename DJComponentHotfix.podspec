@@ -20,12 +20,19 @@ Pod::Spec.new do |s|
     rsa.requires_arc = true
     rsa.frameworks = 'Security'
   end
+  s.subspec 'AES' do |aes|
+    aes.source_files = 'DJComponentHotfix/DJHotfixManager/AESCrypt/*.{h,m}'
+    aes.requires_arc = true
+	#aes.frameworks = 'CommonCrypto'
+	aes.osx.frameworks = "CommonCrypto"
+  end
   s.subspec 'Core' do |core|
     core.source_files = 'DJComponentHotfix/DJHotfixManager/Core/*.{h,m}'
 	core.exclude_files = 'DJComponentHotfix/DJHotfixManager/Core/AppDelegate+DJLaunchProtect.h','DJComponentHotfix/DJHotfixManager/Core/AppDelegate+DJLaunchProtect.m'
 	core.requires_arc = true
 	core.dependency 'JSPatch'
     core.dependency 'DJComponentHotfix/RSA'
+	core.dependency 'DJComponentHotfix/AES'
 	core.dependency 'SSZipArchive'
   end
 end

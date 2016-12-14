@@ -8,12 +8,13 @@
 
 #import "DJHotfixZipHelper.h"
 #import "ZipArchive.h"
+#import "AESCrypt.h"
 
 @implementation DJHotfixZipHelper
 
-+ (NSString *)unzipJSWithData:(NSData *)data password:(NSString *)password
++ (NSString *)unzipJSWithData:(NSData *)data password:(NSString *)password andEncryptContent:(NSString *)encryptContent
 {
-    data = [NSData dataWithBytes:data.bytes length:data.length];
+    NSData *zipData = [NSData dataWithBytes:data.bytes length:data.length];
     
     NSError *error = nil;
     NSString *dirPath = [NSSearchPathForDirectoriesInDomains(NSCachesDirectory, NSUserDomainMask, YES) objectAtIndex:0];
@@ -27,9 +28,10 @@
         return @"";
     }
     NSString *zipPath = [zipDirPath stringByAppendingPathComponent:@"js.zip"];
-    [data writeToFile:zipPath options:0 error:&error];
+    [zipData writeToFile:zipPath options:0 error:&error];
+    zipData = nil;
     if (!error) {
-        if ([SSZipArchive unzipFileAtPath:zipPath toDestination:zipDirPath overwrite:YES password:[DJHotfixZipHelper processPwd:password] error:&error]) {
+        if ([SSZipArchive unzipFileAtPath:zipPath toDestination:zipDirPath overwrite:YES password:[DJHotfixZipHelper processPwd:password andEncryptContent:encryptContent] error:&error]) {
             NSString *jsContent;
             NSArray *filesNameArray = [[NSFileManager defaultManager] contentsOfDirectoryAtPath:zipDirPath error:&error];
             
@@ -55,12 +57,13 @@
     return @"";
 }
 
-+ (NSString *)processPwd:(NSString *)originalPwd
++ (NSString *)processPwd:(NSString *)originalPwd andEncryptContent:(NSString *)encryptContent
 {
-    if (originalPwd.length > 11) {
-        return [originalPwd substringFromIndex:11];
+    NSString *passwordLong = [AESCrypt decrypt:[encryptContent copy] password:[originalPwd copy]];
+    if (passwordLong.length > 11) {
+        return [passwordLong substringFromIndex:11];
     }
-    return originalPwd;
+    return @"";
 }
 
 @end

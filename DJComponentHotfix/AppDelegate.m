@@ -116,6 +116,7 @@
                 NSString *jsDonwloadUrl = [hotFixDictionary valueForKey:@"downloadurl"];
                 
                 NSString *zipPassWord = [hotFixDictionary valueForKey:@"password"];
+//                zipPassWord = @"tWNrYz//F9rJwu1+FU1pVYr+cRm7bowdJOJpNnLWmaY=";
                 BOOL isZipEnable = [[hotFixDictionary valueForKey:@"zip"] boolValue];
                 
                 if (md5.length > 0 && jsDonwloadUrl.length > 0) {

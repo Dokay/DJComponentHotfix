@@ -10,6 +10,6 @@
 
 @interface DJHotfixZipHelper : NSObject
 
-+ (NSString *)unzipJSWithData:(NSData *)data password:(NSString *)password;
++ (NSString *)unzipJSWithData:(NSData *)data password:(NSString *)password andEncryptContent:(NSString *)encryptContent;
 
 @end

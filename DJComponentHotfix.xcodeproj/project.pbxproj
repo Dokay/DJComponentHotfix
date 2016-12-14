@@ -20,6 +20,10 @@
 		4E0D48691D475A3600CA7510 /* RSA.m in Sources */ = {isa = PBXBuildFile; fileRef = 4E0D485A1D475A3600CA7510 /* RSA.m */; };
 		4E0D9DF11CAA20DF00449965 /* demo.js in Resources */ = {isa = PBXBuildFile; fileRef = 4E0D9DEF1CAA20DF00449965 /* demo.js */; };
 		4E7DC1AC1DE55CC300717191 /* DJLaunchCrashProtectHelper.m in Sources */ = {isa = PBXBuildFile; fileRef = 4E7DC1AB1DE55CC300717191 /* DJLaunchCrashProtectHelper.m */; };
+		4E97ED2B1DFFE4E9006F76A0 /* AESCrypt.m in Sources */ = {isa = PBXBuildFile; fileRef = 4E97ED241DFFE4E9006F76A0 /* AESCrypt.m */; };
+		4E97ED2C1DFFE4E9006F76A0 /* NSData+Base64.m in Sources */ = {isa = PBXBuildFile; fileRef = 4E97ED261DFFE4E9006F76A0 /* NSData+Base64.m */; };
+		4E97ED2D1DFFE4E9006F76A0 /* NSData+CommonCrypto.m in Sources */ = {isa = PBXBuildFile; fileRef = 4E97ED281DFFE4E9006F76A0 /* NSData+CommonCrypto.m */; };
+		4E97ED2E1DFFE4E9006F76A0 /* NSString+Base64.m in Sources */ = {isa = PBXBuildFile; fileRef = 4E97ED2A1DFFE4E9006F76A0 /* NSString+Base64.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -48,6 +52,14 @@
 		4E7DC1AA1DE55CC300717191 /* DJLaunchCrashProtectHelper.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DJLaunchCrashProtectHelper.h; sourceTree = "<group>"; };
 		4E7DC1AB1DE55CC300717191 /* DJLaunchCrashProtectHelper.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DJLaunchCrashProtectHelper.m; sourceTree = "<group>"; };
 		4E8E81FE1DD30FD8003194E0 /* DJComponentHotfix.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = DJComponentHotfix.entitlements; sourceTree = "<group>"; };
+		4E97ED231DFFE4E9006F76A0 /* AESCrypt.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AESCrypt.h; sourceTree = "<group>"; };
+		4E97ED241DFFE4E9006F76A0 /* AESCrypt.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AESCrypt.m; sourceTree = "<group>"; };
+		4E97ED251DFFE4E9006F76A0 /* NSData+Base64.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSData+Base64.h"; sourceTree = "<group>"; };
+		4E97ED261DFFE4E9006F76A0 /* NSData+Base64.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSData+Base64.m"; sourceTree = "<group>"; };
+		4E97ED271DFFE4E9006F76A0 /* NSData+CommonCrypto.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSData+CommonCrypto.h"; sourceTree = "<group>"; };
+		4E97ED281DFFE4E9006F76A0 /* NSData+CommonCrypto.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSData+CommonCrypto.m"; sourceTree = "<group>"; };
+		4E97ED291DFFE4E9006F76A0 /* NSString+Base64.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSString+Base64.h"; sourceTree = "<group>"; };
+		4E97ED2A1DFFE4E9006F76A0 /* NSString+Base64.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSString+Base64.m"; sourceTree = "<group>"; };
 		628A12DA0560D89F6921820F /* Pods-DJComponentHotfix.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-DJComponentHotfix.release.xcconfig"; path = "Pods/Target Support Files/Pods-DJComponentHotfix/Pods-DJComponentHotfix.release.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -112,6 +124,7 @@
 		4E0D48521D475A3600CA7510 /* DJHotfixManager */ = {
 			isa = PBXGroup;
 			children = (
+				4E97ED221DFFE4E9006F76A0 /* AESCrypt */,
 				4E0D48531D475A3600CA7510 /* Core */,
 				4E0D48581D475A3600CA7510 /* RSA */,
 			);
@@ -141,6 +154,21 @@
 				4E0D485A1D475A3600CA7510 /* RSA.m */,
 			);
 			path = RSA;
+			sourceTree = "<group>";
+		};
+		4E97ED221DFFE4E9006F76A0 /* AESCrypt */ = {
+			isa = PBXGroup;
+			children = (
+				4E97ED231DFFE4E9006F76A0 /* AESCrypt.h */,
+				4E97ED241DFFE4E9006F76A0 /* AESCrypt.m */,
+				4E97ED251DFFE4E9006F76A0 /* NSData+Base64.h */,
+				4E97ED261DFFE4E9006F76A0 /* NSData+Base64.m */,
+				4E97ED271DFFE4E9006F76A0 /* NSData+CommonCrypto.h */,
+				4E97ED281DFFE4E9006F76A0 /* NSData+CommonCrypto.m */,
+				4E97ED291DFFE4E9006F76A0 /* NSString+Base64.h */,
+				4E97ED2A1DFFE4E9006F76A0 /* NSString+Base64.m */,
+			);
+			path = AESCrypt;
 			sourceTree = "<group>";
 		};
 		540EC0571A095123A5F1E830 /* Pods */ = {
@@ -287,13 +315,17 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				4E97ED2E1DFFE4E9006F76A0 /* NSString+Base64.m in Sources */,
 				4E0BD3A51DE5A8A70008E81C /* DJHotfixZipHelper.m in Sources */,
 				4E0D48691D475A3600CA7510 /* RSA.m in Sources */,
+				4E97ED2D1DFFE4E9006F76A0 /* NSData+CommonCrypto.m in Sources */,
 				4E7DC1AC1DE55CC300717191 /* DJLaunchCrashProtectHelper.m in Sources */,
 				4E006C961C48D04C005664D3 /* JPViewController.m in Sources */,
 				4E006C931C48D04C005664D3 /* AppDelegate.m in Sources */,
 				4E0D48671D475A3600CA7510 /* DJHotfixHelper.m in Sources */,
 				4E0D48681D475A3600CA7510 /* DJHotfixManager.m in Sources */,
+				4E97ED2C1DFFE4E9006F76A0 /* NSData+Base64.m in Sources */,
+				4E97ED2B1DFFE4E9006F76A0 /* AESCrypt.m in Sources */,
 				4E006C901C48D04C005664D3 /* main.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
