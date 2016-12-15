@@ -19,7 +19,7 @@
 
 @import Foundation;
 
-//加密逻辑
+//一、加密逻辑，不包含zip
 //服务端:
 //1.developer上传 hotfix文件A；
 //2.计算A的Md5值 B,
@@ -38,6 +38,13 @@
 //3.A版本升级后的B版本需要hotfix,直接下载
 
 //可以考虑本地先执行本地缓存的，根据服务端的信息判断有没有最新的补丁
+
+//二、zip 包压缩加密逻辑：
+//1.服务端得到js文件进行压缩得到zip文件A,其中压缩密码B，
+//2.将B前面加上当前时间戳得到待加密的内容C,
+//3.对C进行AES加密，密码使用上面一中私钥加密得到的C的末尾16位，加密后的密文为D
+
+//客户端：
 
 @interface AppDelegate ()<DJHotfixManagerDeleagte,UIAlertViewDelegate>
 
@@ -116,7 +123,6 @@
                 NSString *jsDonwloadUrl = [hotFixDictionary valueForKey:@"downloadurl"];
                 
                 NSString *zipPassWord = [hotFixDictionary valueForKey:@"password"];
-//                zipPassWord = @"tWNrYz//F9rJwu1+FU1pVYr+cRm7bowdJOJpNnLWmaY=";
                 BOOL isZipEnable = [[hotFixDictionary valueForKey:@"zip"] boolValue];
                 
                 if (md5.length > 0 && jsDonwloadUrl.length > 0) {

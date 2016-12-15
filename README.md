@@ -29,6 +29,9 @@ pod 'DJComponentHotfix'
 * DJHotfixHelperProtocol <tt>DJHotfixHelper</tt> 实现了该协议。建议自己实现该协议来实现更安全的存储与校验策略。
 * AppDelegate (DJLaunchProtect) 实现了启动崩溃保护机制。
 
+##流程
+![Image](https://github.com/Dokay/DJComponentHotfix/blob/master/hotfix_flow.png)
+
 ##JSPatch
     
 JSPatch: [JSPatch](https://github.com/bang590/JSPatch)
